@@ -16,6 +16,7 @@ case ARGV.first
   when 'start':
     load "#{APP_PATH}script.rb"
   when 'stop':
+    p "Not so easy, buddy"
   when 'restart':
 end
 
