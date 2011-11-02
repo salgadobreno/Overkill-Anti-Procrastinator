@@ -1,0 +1,25 @@
+#!/usr/bin/env ruby
+#
+# app_name      This is a startup script for use in /etc/init.d
+#
+# chkconfig:    2345 80 20
+# description:  Description of program / service
+
+APP_NAME = 'Anti-Procrastinator'
+APP_PATH = '/home/rockercoder/railsapps/apo/'
+
+
+case ARGV.first
+  when 'status':
+    status = 'stopped'
+    puts "#{APP_NAME} is #{status}"
+  when 'start':
+    load "#{APP_PATH}script.rb"
+  when 'stop':
+  when 'restart':
+end
+
+unless %w{start stop restart status}.include? ARGV.first
+  puts "Usage: #{APP_NAME} {start|stop|restart}"
+  exit
+end
