@@ -38,6 +38,7 @@ class TimeNotifier
 
   def disable_procrastinators
     p "procrastinators disabled"
+    system("notify-send 'Procrastinators disabled.'")
 
     temp = Tempfile.new('file')
     lines = File.open('/etc/hosts', 'r') do |f|
@@ -58,6 +59,7 @@ class TimeNotifier
 
   def enable_procrastinators
     p "procrastinators enabled"
+    system("notify-send 'Procrastinators enabled.'")
 
     temp = Tempfile.new('file')
     lines = File.open('/etc/hosts', 'r') do |f|
