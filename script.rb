@@ -38,7 +38,7 @@ class TimeNotifier
 
   def disable_procrastinators
     p "procrastinators disabled"
-    system("notify-send 'Procrastinators disabled.'")
+    system("notify-send #{5000} 'Procrastinators disabled.'")
 
     temp = Tempfile.new('file')
     lines = File.open('/etc/hosts', 'r') do |f|
@@ -59,7 +59,7 @@ class TimeNotifier
 
   def enable_procrastinators
     p "procrastinators enabled"
-    system("notify-send 'Procrastinators enabled.'")
+    system("notify-send -t #{5000} 'Procrastinators enabled.'")
 
     temp = Tempfile.new('file')
     lines = File.open('/etc/hosts', 'r') do |f|
@@ -94,8 +94,12 @@ class TimeFetcher < Time
 
   def self.fetch_time
     time = now
-    changed
+    changed unless weekend?
     notify_observers time
+  end
+
+  def weekend?
+    [6,7].include?(wday)
   end
 end
 
